@@ -78,9 +78,9 @@ export const LoginPage = () => {
           </form>
 
           {/* 提示 */}
-          <div className="mt-6 text-center text-sm text-[#c4d0ed]">
+          {/* <div className="mt-6 text-center text-sm text-[#c4d0ed]">
             默认账号：admin / admin123
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

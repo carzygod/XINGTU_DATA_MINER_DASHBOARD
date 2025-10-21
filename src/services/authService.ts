@@ -9,7 +9,7 @@ interface AuthState {
 export const authService = {
   // 登录
   login: (username: string, password: string): boolean => {
-    if (username === 'admin' && password === 'admin123') {
+    if (username === 'admin' && password === 'xingtu123') {
       const authState: AuthState = {
         isAuthenticated: true,
         username: 'admin'
