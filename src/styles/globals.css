@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Color Palette */
+  --color-abyss-black: #0f111a;
+  --color-main-bg: #1a1d2e;
+  --color-card-bg: #2d3250;
+  --color-card-darker: #424769;
+  --color-primary-blue: #4f7cff;
+  --color-highlight-blue: #5b8def;
+  --color-soft-blue: #7aa2f7;
+  --color-text-primary: #e1e7f5;
+  --color-text-secondary: #c4d0ed;
+  --color-border: rgba(79, 124, 255, 0.2);
+  --color-border-focus: rgba(79, 124, 255, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+  background-color: var(--color-abyss-black);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-main-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-card-darker);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-blue);
+}
+
+/* Smooth Transitions */
+* {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Neumorphism Shadow Utilities */
+.neu-raised {
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3),
+              -8px -8px 16px rgba(74, 80, 115, 0.1);
+}
+
+.neu-pressed {
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5),
+              inset -4px -4px 8px rgba(74, 80, 115, 0.1);
+}
+
+.neu-button {
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3),
+              -6px -6px 12px rgba(74, 80, 115, 0.1);
+}
+
+.neu-button:hover {
+  box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.3),
+              -8px -8px 16px rgba(74, 80, 115, 0.1);
+  transform: translateY(-2px);
+}
+
+.neu-button:active {
+  box-shadow: inset 4px 4px 8px #424769,
+              inset -4px -4px 8px #5c628f;
+  transform: translateY(0);
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
