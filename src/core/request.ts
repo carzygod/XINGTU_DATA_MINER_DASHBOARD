@@ -1,4 +1,4 @@
-const baseApi = "http://localhost:7749/api/"
+const baseApi = "/api/"
 const request_router = {
     account:
     {
