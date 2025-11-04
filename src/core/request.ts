@@ -24,6 +24,22 @@ const request_router = {
       new:"monitor/new",
       del:"monitor/del"
     },
+    pgy:{
+      data:{
+        list:"pgy/data/list",
+        new:"pgy/data/new",
+        lts:"pgy/data/lts",
+        batch:{
+          list:"pgy/data/batch/lts"
+        }
+      },
+      monitor:
+      {
+        list:"pgy/monitor/list",
+        new:"pgy/monitor/new",
+        del:"pgy/monitor/del"
+      },
+    }
 
 };
 
@@ -208,6 +224,80 @@ async function api_config() {
 }
 
 
+// ======================= PGY DATA ======================= //
+async function api_pgy_data_list() {
+  try {
+    const path = baseApi + request_router.pgy.data.list;
+    return await requester(path, request_get_unauth());
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
+
+async function api_pgy_data_new() {
+  try {
+    const path = baseApi + request_router.pgy.data.new;
+    return await requester(
+      path,
+      request_get_unauth(),
+    );
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
+
+async function api_pgy_data_lts() {
+  try {
+    const path = baseApi + request_router.pgy.data.lts;
+    return await requester(path, request_get_unauth());
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
+
+async function api_pgy_data_batch_list() {
+  try {
+    const path = baseApi + request_router.pgy.data.batch.list;
+    return await requester(path, request_get_unauth());
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
+
+// ======================= PGY MONITOR ======================= //
+async function api_pgy_monitor_list() {
+  try {
+    const path = baseApi + request_router.pgy.monitor.list;
+    return await requester(path, request_get_unauth());
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
+
+async function api_pgy_monitor_new(body: any) {
+  try {
+    const path = baseApi + request_router.pgy.monitor.new;
+    return await requester(path, request_post_unauth(body));
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
+
+async function api_pgy_monitor_del(id: any) {
+  try {
+    const path = baseApi + request_router.pgy.monitor.del + "?id=" + id;
+    return await requester(path, request_get_unauth());
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
 export {
   api_account_list,
   api_account_new,
@@ -219,5 +309,13 @@ export {
   api_data_batch_list,
   api_config,
   api_account_del,
-  api_monitor_del
+  api_monitor_del,
+  // New PGY
+  api_pgy_data_list,
+  api_pgy_data_new,
+  api_pgy_data_lts,
+  api_pgy_data_batch_list,
+  api_pgy_monitor_list,
+  api_pgy_monitor_new,
+  api_pgy_monitor_del,
 };

@@ -141,7 +141,7 @@ export const DashboardPage = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-[#e1e7f5]">数据面板</h1>
+        <h1 className="text-3xl font-bold text-[#e1e7f5]">星图数据面板</h1>
         <Button onClick={handleExport}>导出数据</Button>
       </div>
 

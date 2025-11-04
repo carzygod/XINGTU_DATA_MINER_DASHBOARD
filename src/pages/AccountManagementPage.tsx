@@ -87,7 +87,7 @@ export const AccountManagementPage = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-[#e1e7f5]">账号管理</h1>
+        <h1 className="text-3xl font-bold text-[#e1e7f5]">星图账号管理</h1>
         <Button onClick={() => setIsModalOpen(true)}>新增账号</Button>
       </div>
 

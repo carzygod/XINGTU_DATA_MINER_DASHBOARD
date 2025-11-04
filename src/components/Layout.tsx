@@ -9,10 +9,13 @@ interface LayoutProps {
 }
 
 const menuItems = [
-  { path: '/dashboard', label: '数据面板', icon: '📊' },
-  { path: '/control', label: '控制中心', icon: '🎮' },
-  { path: '/accounts', label: '账号管理', icon: '👥' },
-  { path: '/darens', label: '达人管理', icon: '⭐' },
+  { path: '/dashboard', label: '数据面板', icon: '📊星图' },
+  { path: '/control', label: '控制中心', icon: '🎮星图' },
+  { path: '/accounts', label: '账号管理', icon: '👥星图' },
+  { path: '/darens', label: '达人管理', icon: '⭐星图' },
+  { path: '/pgydashboard', label: '数据面板', icon: '🌼蒲公英' },
+  { path: '/pgycontrol', label: '控制中心', icon: '☀蒲公英' },
+  { path: '/pgydarens', label: '达人管理', icon: '🌙蒲公英' },
 ];
 
 export const Layout = ({ children }: LayoutProps) => {

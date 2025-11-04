@@ -5,9 +5,9 @@ import { Table } from '../components/Table';
 import { Modal } from '../components/Modal';
 import { darenService, DarenLink } from '../services/darenService';
 import { useToast } from '../components/Toast';
-import { api_monitor_del, api_monitor_list, api_monitor_new } from '@/core/request';
+import { api_pgy_monitor_del, api_pgy_monitor_list, api_pgy_monitor_new } from '@/core/request';
 
-export const DarenListPage = () => {
+export const PGYDarenListPage = () => {
   const [darens, setDarens] = useState<DarenLink[]>([]);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
@@ -21,7 +21,7 @@ export const DarenListPage = () => {
 
   const loadDarens = async() => {
     // const data = darenService.getDarens();
-    const data = (await api_monitor_list()).data;
+    const data = (await api_pgy_monitor_list()).data;
     setDarens(data);
   };
 
@@ -42,7 +42,7 @@ export const DarenListPage = () => {
     }
 
     darenService.addDarens(links);
-    await api_monitor_new(
+    await api_pgy_monitor_new(
       {url:links}
     )
     showToast(`成功导入${links.length}条链接`, 'success');
@@ -57,7 +57,7 @@ export const DarenListPage = () => {
 
   const confirmDelete = async() => {
     if (deleteId) {
-      await api_monitor_del(deleteId);
+      await api_pgy_monitor_del(deleteId);
       darenService.deleteDaren(deleteId);
       showToast('删除成功', 'success');
       setDeleteId(null);
@@ -161,7 +161,7 @@ export const DarenListPage = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-3">
-        <h1 className="text-3xl font-bold text-[#e1e7f5]">星图达人管理</h1>
+        <h1 className="text-3xl font-bold text-[#e1e7f5]">蒲公英达人管理</h1>
         <div className="flex gap-3">
           {/* <Button 
             variant="danger" 

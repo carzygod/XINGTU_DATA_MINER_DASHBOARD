@@ -5,9 +5,9 @@ import { Input } from '../components/Input';
 import { Table } from '../components/Table';
 import { crawlerService, CrawlerRecord } from '../services/crawlerService';
 import { useToast } from '../components/Toast';
-import { api_data_batch_list, api_data_new, api_monitor_list } from '@/core/request';
+import { api_pgy_data_batch_list, api_pgy_data_new } from '@/core/request';
 
-export const ControlPage = () => {
+export const PGYControlPage = () => {
   const [link, setLink] = useState('');
   const [records, setRecords] = useState<CrawlerRecord[]>([]);
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,7 @@ export const ControlPage = () => {
 
   const loadRecords = async() => {
     // const data = crawlerService.getRecords();
-    const data = (await api_data_batch_list())?.data;
+    const data = (await api_pgy_data_batch_list())?.data;
     setRecords(data);
   };
 
@@ -32,7 +32,7 @@ export const ControlPage = () => {
 
     setLoading(true);
     try {
-      const result = await api_data_new();
+      const result = await api_pgy_data_new();
       // if (result.status === 'success') {
       //   showToast(`爬虫执行成功，抓取${result.dataCount}条数据`, 'success');
       // } else {
@@ -98,10 +98,10 @@ export const ControlPage = () => {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-[#e1e7f5]">星图控制中心</h1>
+      <h1 className="text-3xl font-bold text-[#e1e7f5]">控制中心</h1>
 
       {/* 执行爬虫 */}
-      <Card title="数据操作">
+      <Card title="蒲公英数据操作">
         <form onSubmit={handleExecute} className="space-y-4">
           {/* <Input
             type="url"

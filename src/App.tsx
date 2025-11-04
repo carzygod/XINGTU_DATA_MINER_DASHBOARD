@@ -8,6 +8,9 @@ import { AccountManagementPage } from './pages/AccountManagementPage';
 import { DarenListPage } from './pages/DarenListPage';
 import { authService } from './services/authService';
 import './styles/globals.css';
+import { PGYDashboardPage } from './pages/PGYDashboardPage';
+import { PGYControlPage } from './pages/PGYControlPage';
+import { PGYDarenListPage } from './pages/PGYDarenListPage';
 
 // 受保护路由组件
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -31,6 +34,10 @@ function App() {
                     <Route path="/control" element={<ControlPage />} />
                     <Route path="/accounts" element={<AccountManagementPage />} />
                     <Route path="/darens" element={<DarenListPage />} />
+
+                    <Route path="/pgydashboard" element={<PGYDashboardPage />} />
+                    <Route path="/pgycontrol" element={<PGYControlPage />} />
+                    <Route path="/pgydarens" element={<PGYDarenListPage />} />
                     <Route path="/" element={<Navigate to="/dashboard" replace />} />
                   </Routes>
                 </Layout>
