@@ -65,12 +65,15 @@ export const DarenListPage = () => {
     }
   };
 
-  const handleBatchDelete = () => {
+  const handleBatchDelete = async() => {
     if (selectedIds.length === 0) {
       showToast('请选择要删除的项目', 'error');
       return;
     }
-
+    for(let id of selectedIds)
+    {
+      await api_monitor_del(id);
+    }
     darenService.deleteDarens(selectedIds);
     showToast(`成功删除${selectedIds.length}条记录`, 'success');
     setSelectedIds([]);
@@ -92,26 +95,26 @@ export const DarenListPage = () => {
   };
 
   const columns = [
-    // { 
-    //   key: 'select', 
-    //   title: (
-    //     <input
-    //       type="checkbox"
-    //       checked={selectedIds.length === darens.length && darens.length > 0}
-    //       onChange={toggleSelectAll}
-    //       className="w-4 h-4"
-    //     />
-    //   ),
-    //   width: '50px',
-    //   render: (_: any, record: DarenLink) => (
-    //     <input
-    //       type="checkbox"
-    //       checked={selectedIds.includes(record.id)}
-    //       onChange={() => toggleSelect(record.id)}
-    //       className="w-4 h-4"
-    //     />
-    //   )
-    // },
+    { 
+      key: 'select', 
+      title: (
+        <input
+          type="checkbox"
+          checked={selectedIds.length === darens.length && darens.length > 0}
+          onChange={toggleSelectAll}
+          className="w-4 h-4"
+        />
+      ),
+      width: '50px',
+      render: (_: any, record: DarenLink) => (
+        <input
+          type="checkbox"
+          checked={selectedIds.includes(record.id)}
+          onChange={() => toggleSelect(record.id)}
+          className="w-4 h-4"
+        />
+      )
+    },
     { 
       key: 'url', 
       title: '达人链接', 
@@ -163,13 +166,13 @@ export const DarenListPage = () => {
       <div className="flex items-center justify-between flex-wrap gap-3">
         <h1 className="text-3xl font-bold text-[#e1e7f5]">星图达人管理</h1>
         <div className="flex gap-3">
-          {/* <Button 
+          <Button 
             variant="danger" 
             onClick={handleBatchDelete}
             disabled={selectedIds.length === 0}
           >
             批量删除 ({selectedIds.length})
-          </Button> */}
+          </Button>
           <Button onClick={() => setIsImportModalOpen(true)}>批量导入</Button>
         </div>
       </div>

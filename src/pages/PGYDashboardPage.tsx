@@ -115,6 +115,8 @@ const columns = [
   { key: "age_above44", title: "＞44", width: "100px" },
   { key: "region_province", title: "按省份", width: "150px" },
   { key: "region_city", title: "按城市", width: "150px" },
+  { key: "iosUserRatio", title: "按设备", width: "150px" },
+  { key: "userInterests", title: "按兴趣", width: "150px" },
 ];
 
 
