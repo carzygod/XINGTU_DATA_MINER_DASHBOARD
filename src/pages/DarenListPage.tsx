@@ -8,7 +8,7 @@ import { useToast } from '../components/Toast';
 import { api_monitor_del, api_monitor_list, api_monitor_new } from '@/core/request';
 
 export const DarenListPage = () => {
-  const [darens, setDarens] = useState<DarenLink[]>([]);
+  const [darens, setDarens] = useState<any[]>([]);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
@@ -80,9 +80,9 @@ export const DarenListPage = () => {
     loadDarens();
   };
 
-  const toggleSelect = (id: string) => {
+  const toggleSelect = (_id: string) => {
     setSelectedIds(prev => 
-      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+      prev.includes(_id) ? prev.filter(i => i !== _id) : [...prev, _id]
     );
   };
 
@@ -90,7 +90,7 @@ export const DarenListPage = () => {
     if (selectedIds.length === darens.length) {
       setSelectedIds([]);
     } else {
-      setSelectedIds(darens.map(d => d.id));
+      setSelectedIds(darens.map(d => d._id));
     }
   };
 
@@ -106,11 +106,11 @@ export const DarenListPage = () => {
         />
       ),
       width: '50px',
-      render: (_: any, record: DarenLink) => (
+      render: (_: any, record: any) => (
         <input
           type="checkbox"
-          checked={selectedIds.includes(record.id)}
-          onChange={() => toggleSelect(record.id)}
+          checked={selectedIds.includes(record._id)}
+          onChange={() => toggleSelect(record._id)}
           className="w-4 h-4"
         />
       )
@@ -181,7 +181,7 @@ export const DarenListPage = () => {
         <Table
           columns={columns}
           data={darens}
-          rowKey="id"
+          rowKey="_id"
         />
       </Card>
 
