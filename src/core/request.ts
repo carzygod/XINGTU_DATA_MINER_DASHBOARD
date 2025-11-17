@@ -25,6 +25,7 @@ const request_router = {
       del:"monitor/del"
     },
     pgy:{
+      updateAuth:"pgy/auth/new",
       data:{
         list:"pgy/data/list",
         new:"pgy/data/new",
@@ -248,6 +249,20 @@ async function api_pgy_data_new() {
   }
 }
 
+async function api_pgy_auth_new() {
+  try {
+    const path = baseApi + request_router.pgy.updateAuth;
+    return await requester(
+      path,
+      request_get_unauth(),
+    );
+  } catch (e) {
+    console.error(e);
+    return [];
+  }
+}
+
+
 async function api_pgy_data_lts() {
   try {
     const path = baseApi + request_router.pgy.data.lts;
@@ -310,6 +325,7 @@ export {
   api_config,
   api_account_del,
   api_monitor_del,
+  api_pgy_auth_new,
   // New PGY
   api_pgy_data_list,
   api_pgy_data_new,

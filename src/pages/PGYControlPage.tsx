@@ -5,7 +5,7 @@ import { Input } from '../components/Input';
 import { Table } from '../components/Table';
 import { crawlerService, CrawlerRecord } from '../services/crawlerService';
 import { useToast } from '../components/Toast';
-import { api_pgy_data_batch_list, api_pgy_data_new } from '@/core/request';
+import { api_pgy_auth_new, api_pgy_data_batch_list, api_pgy_data_new } from '@/core/request';
 
 export const PGYControlPage = () => {
   const [link, setLink] = useState('');
@@ -44,6 +44,18 @@ export const PGYControlPage = () => {
       showToast('执行失败', 'error');
     } finally {
       // setLoading(false);
+    }
+  };
+
+  const handleAuthUpdate = async (e: FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const result = await api_pgy_auth_new();
+      loadRecords();
+    } catch (error) {
+      showToast('执行失败', 'error');
+    } finally {
     }
   };
 
@@ -114,6 +126,12 @@ export const PGYControlPage = () => {
           onClick={handleExecute}
           >
             {loading ? '执行中...' : '获取数据'}
+          </Button>
+
+          <Button loading={loading}
+          onClick={handleAuthUpdate}
+          >
+            {loading ? '执行中...' : '更新账户权限'}
           </Button>
         </form>
       </Card>
